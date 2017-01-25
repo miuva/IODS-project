@@ -1,5 +1,6 @@
 ---
 title: "IODS course project"
+author: "Mirva Turkia"
 output:
   html_document:
     theme: cosmo

@@ -1,0 +1,2 @@
+#Course Diary
+This course includes data analysis exercises and you can find them from my [Course Diary](https://miuva.github.io/IODS-project/)
