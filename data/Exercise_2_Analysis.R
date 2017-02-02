@@ -1,0 +1,65 @@
+# Read the students2014 data into R
+getwd()
+setwd("/Users/mirva/IODS-project/data")
+learning2014 = read.csv("learning2014")
+dim(learning2014)
+str(learning2014)
+# This data is part of the data which Kimmo Vehkalahti has collected 3.12.2014 - 10.1.2015 on the course: 
+# Johdatus yhteiskuntatilastotieteeseen, syksy 2014 (Introduction to Social Statistics, fall 2014 - in Finnish)
+
+# The data has 166 observations and 7 variables which are gender, age, attitude, deep, stra, surf and points
+
+# gender has two options: M (Male), F (Female)
+# age is (in years) derived from the date of birth
+# attitude describes global attitude toward statistics
+# deep, stra and suf are on the Likert-scale
+# deep refers to deep learning and is the average score of the subsets Seeking Meaning, Relating Ideas and 
+# Use of Evidence 
+# stra refers to strategic learning and is the average score of the subsets Organized Studying and Time Management
+# surf refers to surface learning and is the average of the subsets Lack of Purpose, Unrelated Memorising and 
+# Syllabus-boundness 
+# points are the exam points of the course
+
+# Graphical overview of the data
+library(ggplot2)
+library(GGally)
+overw <- ggpairs(learning2014, mapping = aes(col = gender, alpha = 0.3), 
+             lower = list(combo = wrap("facethist", bins = 20)))
+overw
+summary(learning2014)
+
+# The variables are all quite normally distributed except the age-variable where the min is 17, median 22 and max 55
+# Also the differences between men and women are quite small, allthough the distributions are not exactly equal
+# Biggest overall correlations are between attitude and points (r=.437) and deep and surf (negative, r=-.324),
+# correspondingly smallest overall correlations are between deep and points (negative, r=-.0101), attitude and 
+# age (r=.0222) and deep and age (r.0251)
+
+# y="points", x1="attitude", x2="stra" and x3="surf"
+ggpairs(learning2014, lower = list(combo = wrap("facethist", bins = 20)))
+regr1 <- lm(points ~ attitude + stra +surf, data = learning2014)
+summary(regr1)
+
+# T-value of attitude (5.913) is statistically significant (p<.001) so the attitude-variable explains well
+# the points-variable. T-values of stra (1.575) and surf(-0.731) aren´t significant in this model so I will
+# remove the one with smaller t-value: the variable surf.
+regr2 <- lm(points ~ attitude + stra, data = learning2014)
+summary(regr2)
+
+# The p-value of the variable stra (p=.08927) remains still >.05 so i will also remove it from the model.
+regr3 <- lm(points ~ attitude, data = learning2014)
+summary(regr3)
+
+# The relationship between attitude and points: when y = "attitude" and x = "points" we can predict the
+# value of y with model: y = 11.63715 + 0.35255x + e
+# Multiple R-squared of this model is 0.1906, so the model explains 19,06% of the variation of attitude
+
+# Diagnostic plots: Residuals vs Fitted values, Normal QQ-plot and Residuals vs Leverage
+par(mfrow = c(2,2))
+plot(regr3, which = c(1,2,5))
+# Interpretation of the plots:
+# Residuals vs Fitted: Residuals are quite randomly around the 0 line so it could indicate that the residuals
+# and fitted values are not correlated.
+# Normal QQ-plot: At most part the Q-Q plots follow the theoretical line quite nicely and are therefore normally
+# distributed, but at the beginning and in the end of the line the plots aren´t so well on the line which
+# indicates that there is light left skewness
+# Residuals vs Leverage: There seems to be three outliers (35, 56 and 71) which could influence the model
