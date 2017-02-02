@@ -1,4 +1,4 @@
-# RStudio Exercise 2: Analysis
+# Week 2: Regression and model validation
 
 ## Reading the students2014 data into R    
 ### R-code and output   
