@@ -3,6 +3,7 @@
 ## Reading the students2014 data into R    
 ### R-code and output   
     
+You can find the code pressing the "Code"-button on the right ->
 ```{r}
 getwd()
 setwd("/Users/mirva/IODS-project/data")

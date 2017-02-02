@@ -1,5 +1,15 @@
 # About the project
 
-This is the Introduction to Open Data Science course by Kimmo Vehkalahti & co.   
-   
-[Link to my GitHub repository](https://github.com/miuva/IODS-project) 
+This is the Introduction to Open Data Science course by Kimmo Vehkalahti & co.
+    
+This course consists of seven sections and every section has it´s weekly exercises.
+
+1. Tools and methods for open and reproducible research
+2. Regression and model validation
+3. Logistic regression
+4. Clustering and classification Not available
+5. Dimensionality reduction techniques Not available
+6. Multivariate statistical modelling Not available
+7. Final assignment
+
+We are using GitHub to share our work. My repository you can find [here](https://github.com/miuva/IODS-project) 
