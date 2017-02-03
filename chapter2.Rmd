@@ -109,7 +109,7 @@ plot(regr3, which = c(1,2,5))
 ### Interpretation of the plots
 * Residuals vs Fitted: Residuals are quite randomly around the 0 line so it could indicate that the residuals and fitted values are not correlated.
 * Normal QQ-plot: At most part the Q-Q plots follow the theoretical line quite nicely and are therefore normally distributed, but at the beginning and in the end of the line the plots aren´t so well on the line which indicates that there is light left skewness
-* Residuals vs Leverage: There seems to be three outliers (35, 56 and 71) which could influence the model    
+* Residuals vs Leverage: There seems to be three outliers (35, 56 and 71) which could influence the model so the next step would be to delete them and see how it affects R-squared  
     
     
     
