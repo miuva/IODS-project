@@ -2,14 +2,13 @@
 
 This is the Introduction to Open Data Science course by Kimmo Vehkalahti & co.
     
-This course consists of seven sections and every section has it´s weekly exercises.
+This course consists of six sections and every section has it´s weekly exercises.
 
 1. Tools and methods for open and reproducible research
 2. Regression and model validation
 3. Logistic regression
 4. Clustering and classification
 5. Dimensionality reduction techniques
-6. Multivariate statistical modelling
-7. Final assignment
+6. Final assignment
 
 We are using GitHub to share our work. My repository you can find [here](https://github.com/miuva/IODS-project).
