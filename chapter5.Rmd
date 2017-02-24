@@ -29,6 +29,7 @@ Now that you know what the variables used here are let´s look at the graphics a
     
 ## The graphical overview of the data
 ```{r}
+opts_chunk$set(out.width='750px', dpi=200)
 library(GGally); library(dplyr); library(corrplot)
 ggpairs(human)
 cor(human) %>% corrplot()
