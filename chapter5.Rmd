@@ -28,10 +28,11 @@ As you can see there are 155 observations and 8 variables in this data. The vari
 Now that you know what the variables used here are let´s look at the graphics and summaries of the data.
     
 ## The graphical overview of the data
-```{r}
-opts_chunk$set(out.width='750px', dpi=200)
+```{r out.width='850px', dpi=200}
 library(GGally); library(dplyr); library(corrplot)
 ggpairs(human)
+```
+```{r out.width='600px', dpi=200}
 cor(human) %>% corrplot()
 ```
 
@@ -62,7 +63,7 @@ Parli.F tells much of the equality between the genders. The minimum here is 0 me
 Because there are 8 variables it would be hard to interpret the relations between them if we could use only pairwise comparisons. That´s why I will use principal component analysis (PCA) which reduces variables to combinations of the data. I will perform the PCA first on the non standardized human data and then on the standardized human data
      
 ## PCA on non standardized data
-```{r}
+```{r out.width='900px', dpi=200}
 pca1_human <- prcomp(human)
 s1 <- summary(pca1_human)
 s1
@@ -73,7 +74,7 @@ biplot(pca1_human, cex = c(0.8, 1), col = c("grey40", "deeppink2"), xlab = pc1_l
 ```
     
 ## PCA on standardized data
-```{r}
+```{r out.width='900px', dpi=200}
 human_std <- scale(human)
 summary(human_std)
 pca2_human <- prcomp(human_std)
@@ -120,7 +121,7 @@ As you can see from the summary there are the following options in the chosen va
 * how: with a tea bag, with a tea bag and loose leaf (unpackaged) or only loose leaf
 * where: from a chain store, from a chain store and a tea shop or only from a tea shop
     
-    ```{r}
+```{r out.width='850px', dpi=200}
 gather(tea_time) %>% ggplot(aes(value)) + facet_wrap("key", scales = "free") + geom_bar() + theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 8))
 ```
     
@@ -135,7 +136,7 @@ summary(mca)
 ```
     
 Here we can see that the dimensions 1 and 2 cover 29,915% of the variance. From the last table we can see how well different variables correlate with the first three dimensions.
-```{r}
+```{r out.width='850px', dpi=200}
 plot(mca, invisible=c("ind"), habillage = "quali")
 ```
     
